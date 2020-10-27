@@ -4,7 +4,7 @@
 package poisondog.demo.app
 
 class MessageUtils {
-    companion object {
-        fun getMessage(): String = "Hello      World!"
-    }
+	companion object {
+		fun getMessage(): String = "Hello      World!"
+	}
 }
