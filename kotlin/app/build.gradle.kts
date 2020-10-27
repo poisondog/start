@@ -3,14 +3,14 @@
  */
 
 plugins {
-    id 'kotlin.kotlin-application-conventions'
+    id("poisondog.demo.kotlin-application-conventions")
 }
 
 dependencies {
-    implementation project(':utilities')
+    implementation(project(":utilities"))
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'kotlin.app.AppKt'
+    mainClass.set("poisondog.demo.app.AppKt")
 }

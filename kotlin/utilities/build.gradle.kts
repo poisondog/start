@@ -3,9 +3,9 @@
  */
 
 plugins {
-    id 'kotlin.kotlin-library-conventions'
+    id("poisondog.demo.kotlin-library-conventions")
 }
 
 dependencies {
-    api project(':list')
+    api(project(":list"))
 }

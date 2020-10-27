@@ -3,5 +3,5 @@
  */
 
 plugins {
-    id 'kotlin.kotlin-library-conventions'
+    id("poisondog.demo.kotlin-library-conventions")
 }
