@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class Hello {
-	@RequestMapping("hello")
+//	@RequestMapping("hello")
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public String hello(@RequestParam("user") String user, Model m) {
 		m.addAttribute("user", user);
 		return "hello_view.jsp";
