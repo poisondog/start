@@ -24,13 +24,13 @@ public class HelloServletTest {
 		MockitoAnnotations.initMocks(this);
 	}
 
-//	@Test
-//	public void doGet() throws Exception {
-//		StringWriter stringWriter = new StringWriter();
-//		PrintWriter printWriter = new PrintWriter(stringWriter);
-//		when(response.getWriter()).thenReturn(printWriter);
-//		new Hello().doGet(request, response);
-//		assertEquals("{\"id\":3342, \"message\":\"Good\"}\n", stringWriter.toString());
-//	}
+	@Test
+	public void doGet() throws Exception {
+		StringWriter stringWriter = new StringWriter();
+		PrintWriter printWriter = new PrintWriter(stringWriter);
+		when(response.getWriter()).thenReturn(printWriter);
+		new Hello().doGet(request, response);
+		assertEquals("{\"id\":3342, \"message\":\"Good\"}\n", stringWriter.toString());
+	}
 
 }
