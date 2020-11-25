@@ -28,6 +28,13 @@ class DemoTest {
 		d.print()
 		d.print("Jack")
 		poisondog.sayHello("Adam")
-		d.defaultForEach()
+	}
+	@Test fun testArray() {
+		var d = Demo();
+		d.tryArray()
+	}
+	@Test fun testMap() {
+		var d = Demo();
+		d.tryMap()
 	}
 }
