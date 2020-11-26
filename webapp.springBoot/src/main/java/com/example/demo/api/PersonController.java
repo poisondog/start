@@ -5,9 +5,11 @@ import com.example.demo.service.PersonService;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,5 +44,15 @@ public class PersonController {
 	@GetMapping(path = "{pid}")
 	public Person getPersonById(@PathVariable("pid") UUID id) {
 		return personService.getPersonById(id).orElse(null);
+	}
+
+	@DeleteMapping(path = "{pid}")
+	public void deletePersonById(@PathVariable("pid") UUID id) {
+		personService.deletePerson(id);
+	}
+
+	@PutMapping(path = "{pid}")
+	public void updatePerson(@PathVariable("pid") UUID id, @RequestBody Person personToUpdate) {
+		personService.updatePerson(id, personToUpdate);
 	}
 }
