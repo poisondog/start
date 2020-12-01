@@ -21,7 +21,7 @@ public class PersonService {
 	 * Constructor
 	 */
 	@Autowired
-	public PersonService(@Qualifier("fakeDao") PersonDao personDao) {
+	public PersonService(@Qualifier("postgres") PersonDao personDao) {
 		this.personDao = personDao;
 	}
 

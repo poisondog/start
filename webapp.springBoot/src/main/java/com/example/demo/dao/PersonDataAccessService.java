@@ -1,10 +1,11 @@
 package com.example.demo.dao;
 
-import java.util.UUID;
 import com.example.demo.model.Person;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,6 +14,16 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("postgres")
 public class PersonDataAccessService implements PersonDao {
+	private final JdbcTemplate jdbcTemplate;
+
+	/**
+	 * Constructor
+	 */
+	@Autowired
+	public PersonDataAccessService(JdbcTemplate template) {
+		jdbcTemplate = template;
+	}
+
 	@Override
 	public int insertPersion(UUID id, Person person) {
 		return 0;
@@ -20,7 +31,12 @@ public class PersonDataAccessService implements PersonDao {
 
 	@Override
 	public List<Person> selectAllPeople() {
-		return List.of(new Person(UUID.randomUUID(), "FROM POSTGRES DB"));
+		final String sql = "SELECT id, name FROM person";
+		List<Person> people = jdbcTemplate.query(sql, (result, i) -> {
+			UUID id = UUID.fromString(result.getString("id"));
+			return new Person(id, result.getString("name"));
+		});
+		return people;
 	}
 
 	@Override
@@ -35,6 +51,11 @@ public class PersonDataAccessService implements PersonDao {
 
 	@Override
 	public Optional<Person> selectPersonById(UUID id) {
-		return Optional.empty();
+		final String sql = "SELECT id, name FROM person WHERE id = ?";
+		Person person = jdbcTemplate.queryForObject(sql, new Object[]{id}, (result, i) -> {
+			UUID pid = UUID.fromString(result.getString("id"));
+			return new Person(pid, result.getString("name"));
+		});
+		return Optional.ofNullable(person);
 	}
 }
