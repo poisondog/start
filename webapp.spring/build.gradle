@@ -4,7 +4,7 @@ plugins {
 }
 
 gretty {
-	httpPort = 8080
+	httpPort = 8090
 }
 
 sourceCompatibility = 1.6
