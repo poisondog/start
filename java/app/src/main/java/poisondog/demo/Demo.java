@@ -19,7 +19,17 @@ package poisondog.demo;
  * @author Adam Huang <poisondog@gmail.com>
  */
 public class Demo {
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(getClass().getName());
+		return builder.toString();
+	}
 	public static void main (String [] args){
+		Demo de = new Demo();
+		System.out.println("getName(): " + Demo.class.toString());
 		System.out.println(new Hello());
+		for (int in = 0; in < 100; in++) {
+			System.out.println("08:" + (int)(Math.random() * 25 + 30) + " → " + String.format("18:%02d", (int)(Math.random() * 12)));
+		}
 	}
 }
