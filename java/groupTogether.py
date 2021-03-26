@@ -24,7 +24,7 @@ matchLines.reverse()
 for line in matchLines:
 	newLines.insert(first, line)
 
-newFiles = open(filename, "w")
+newFile = open(filename, "w")
 for line in newLines:
-	newFiles.write(line)
-newFiles.close()
+	newFile.write(line)
+newFile.close()
